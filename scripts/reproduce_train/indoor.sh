@@ -8,7 +8,7 @@ export PYTHONPATH=$PROJECT_DIR:$PYTHONPATH
 cd $PROJECT_DIR
 
 data_cfg_path="configs/data/scannet_trainval.py"
-main_cfg_path="configs/loftr/indoor/aspan_train.py"
+main_cfg_path="configs/aspan/indoor/aspan_train.py"
 
 n_nodes=1
 n_gpus_per_node=8
@@ -32,4 +32,3 @@ CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u ./train.py \
     --max_epochs=30 \
     --parallel_load_data \
     --mode integrated
-    #--ckpt_path /root/loftr_extension/logs/tb_logs/indoor-ds-bs--offset=16/version_6/checkpoints/epoch=0-auc@5=0.018-auc@10=0.050-auc@20=0.113.ckpt
