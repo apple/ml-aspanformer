@@ -16,7 +16,7 @@ n_gpus_per_node=8
 torch_num_workers=8
 batch_size=1
 pin_memory=true
-exp_name="outdoor-ds-aspan-${TRAIN_IMG_SIZE}-bs-3ini_layers_3gla_layers=$(($n_gpus_per_node * $n_nodes * $batch_size))"
+exp_name="outdoor-ds-aspan-${TRAIN_IMG_SIZE}-bs=$(($n_gpus_per_node * $n_nodes * $batch_size))"
 
 CUDA_VISIBLE_DEVICES='0,1,2,3,4,5,6,7' python -u ./train.py \
     ${data_cfg_path} \
