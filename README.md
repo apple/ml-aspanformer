@@ -2,7 +2,7 @@
 
 ![Framework](assets/teaser.png)
 
-This is a PyTorch implementation of ASpanFormer for ECCV'22 paper “ASpaFormer: Detector-Free Matching with Adaptive Span Transformer” and can be used to reproduce the results in the paper.
+This is a PyTorch implementation of ASpanFormer for ECCV'22 paper “ASpaFormer: Detector-Free Image Matching with Adaptive Span Transformer” and can be used to reproduce the results in the paper.
 
 This work focuses on detector-free image matching. We propose a hierarchical attention framework for cross-view feature update, which adaptively adjusts attention span based on region-wise matchability.
 
@@ -10,7 +10,7 @@ This repo contains training, evaluation and basic demo scripts used in our paper
 
 A large part of the code base is borrowed from the [LoFTR Repository](https://github.com/zju3dv/LoFTR) under its own separate license, terms and conditions.  The authors of this software are not responsible for the contents of third-party websites.
 
-## Installation
+## Installation 
 ```bash
 conda env create -f environment.yaml
 conda activate ASpanFormer
@@ -88,7 +88,7 @@ If you find this project useful, please cite:
 
 ```
 @article{chen2022aspanformer,
-  title={ASpanFormer: Detector-Free Matching with Adaptive Span Transformer},
+  title={ASpanFormer: Detector-Free Image Matching with Adaptive Span Transformer},
   author={Chen, Hongkai and Luo, Zixin and Zhou, Lei and Tian, Yurun and Zhen, Mingmin and Fang, Tian and McKinnon, David and Tsin, Yanghai and Quan, Long},
   journal={European Conference on Computer Vision (ECCV)},
   year={2022}
