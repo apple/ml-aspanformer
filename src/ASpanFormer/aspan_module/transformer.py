@@ -98,8 +98,8 @@ class messageLayer_gla(nn.Module):
         Args:
             x0 (torch.Tensor): [B, C, H, W]
             x1 (torch.Tensor): [B, C, H, W]
-            flow_feature0 (torch.Tensor): [B, 4, H, W]
-            flow_feature1 (torch.Tensor): [B, 4, H, W]
+            flow_feature0 (torch.Tensor): [B, C', H, W]
+            flow_feature1 (torch.Tensor): [B, C', H, W]
         """
         flow0,flow1=self.decode_flow(flow_feature0,flow_feature1.shape[2:]),self.decode_flow(flow_feature1,flow_feature0.shape[2:])
         x0_new,flow_feature0_new=self.update(x0,x1,flow0.detach(),flow_feature0,pos1,mask0,mask1,ds0,ds1)
@@ -125,8 +125,9 @@ class messageLayer_gla(nn.Module):
 
     def decode_flow(self,flow_feature,kshape):
         bs,h,w=flow_feature.shape[0],flow_feature.shape[2],flow_feature.shape[3]
+        scale_factor=torch.tensor([kshape[1],kshape[0]]).cuda()[None,None,None]
         flow=self.flow_decoder(flow_feature.view(bs,-1,h*w)).permute(0,2,1).view(bs,h,w,4)
-        flow_coordinates=torch.sigmoid(flow[:,:,:,:2])*torch.tensor(kshape).cuda()[None,None,None]
+        flow_coordinates=torch.sigmoid(flow[:,:,:,:2])*scale_factor
         flow_var=flow[:,:,:,2:]
         flow=torch.cat([flow_coordinates,flow_var],dim=-1) #B*H*W*4
         return flow

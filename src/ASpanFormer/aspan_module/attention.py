@@ -94,7 +94,7 @@ class HierachicalAttention(Module):
         #span_scale:B*H*W
         bs=q.shape[0]
         h,w=q.shape[2],q.shape[3]
-        hk,wk=k.shape[2],k.shape[2]
+        hk,wk=k.shape[2],k.shape[3]
         offset=offset.view(bs,-1,2)
         span_scale=span_scale.view(bs,-1,1,2)
         #B*G*2

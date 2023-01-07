@@ -28,7 +28,7 @@ class PositionEncodingSine(nn.Module):
 
         if pre_scaling[0] is not None and pre_scaling[1] is not None:
             train_res,test_res=pre_scaling[0],pre_scaling[1]
-            x_position,y_position=x_position*train_res[1]/test_res[1],y_position*train_res[0]/test_res[1]
+            x_position,y_position=x_position*train_res[1]/test_res[1],y_position*train_res[0]/test_res[0]
 
         div_term = torch.exp(torch.arange(0, d_model//2, 2).float() * (-math.log(10000.0) / (d_model//2)))
         div_term = div_term[:, None, None]  # [C//4, 1, 1]
