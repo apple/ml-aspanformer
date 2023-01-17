@@ -109,7 +109,7 @@ class HierachicalAttention(Module):
         v=F.grid_sample(v, grid=sample_norm).view(bs, self.nhead,self.d_model//self.nhead,-1, self.nsample[1]**2) #B*head*D*G*r^2
         #import pdb;pdb.set_trace()
         if maskv is not None:
-            mask_sample=F.grid_sample(maskv.view(bs,-1,h,w).float(),grid=sample_norm)==1 #B*1*G*r^2
+            mask_sample=F.grid_sample(maskv.view(bs,-1,h,w).float(),grid=sample_norm,mode='nearest')==1 #B*1*G*r^2
         else:
             mask_sample=None
         return q,k,v,sample_pixel,mask_sample
