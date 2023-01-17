@@ -21,7 +21,7 @@ Download model weights from [here](https://drive.google.com/file/d/1eavM9dTkw9nb
 
 Extract weights by
 ```bash
-tar -xvf weights_apsanformer.tar
+tar -xvf weights_aspanformer.tar
 ```
 
 A demo to match one image pair is provided. To get a quick start, 
